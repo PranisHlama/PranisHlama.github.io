@@ -1,4 +1,4 @@
-baseURL = 'https://pranishlama.github.io/'
+baseURL = 'https://example.org/'
 locale = 'en-us'
 title = 'Axon Systems'
 description = 'Delivering innovative IT solutions, cloud services, cybersecurity, and digital transformation for modern businesses.'
