@@ -1,0 +1,95 @@
+baseURL = 'https://pranishlama.github.io/'
+locale = 'en-us'
+title = 'Axon Systems'
+description = 'Delivering innovative IT solutions, cloud services, cybersecurity, and digital transformation for modern businesses.'
+theme = 'hugo-agency-web'
+[menu]
+
+  [[menu.main]]
+  name = "Home"
+  url = "/"
+  weight = 1
+
+  [[menu.main]]
+  name = "About"
+  url = "/about/"
+  weight = 2
+
+  [[menu.main]]
+  name = "Services"
+  url = "/services/"
+  weight = 3
+
+  [[menu.main]]
+  name = "Contact"
+  url = "/contactus/"
+  weight = 4
+
+[params]
+
+  [params.hero]
+  title = "Build Modern Web Apps"
+  subtitle = "Fast, scalable, and user-friendly solutions"
+  buttonText = "Get Started"
+  buttonLink = "/contact/"
+
+  [params.about]
+  title = "About Us"
+  content = "We are a team of developers building high-quality digital products."
+
+  [[params.services]]
+  title = "Web Development"
+  description = "Modern websites using React and Next.js"
+
+  [[params.services]]
+  title = "Backend Development"
+  description = "Robust APIs using Django and Node.js"
+
+  [[params.services]]
+  title = "Mobile Apps"
+  description = "Cross-platform apps using Flutter"
+
+[[menu.footer]]
+name = "About"
+url = "/about/"
+weight = 1
+
+[[menu.footer]]
+name = "Services"
+url = "/services/"
+weight = 2
+
+[[menu.footer]]
+name = "Contact"
+url = "/contactus/"
+weight = 3
+
+[[menu.services]]
+name = "ERP Consultation"
+url = "/services/consulting/"
+weight = 1
+
+[[menu.services]]
+name = "ERP Implementation"
+url = "/services/erp-implementation/"
+weight = 2
+
+[[menu.services]]
+name = "ERP Training"
+url = "/services/erp-training/"
+weight = 3
+
+[[menu.services]]
+name = "Compliance and TQM"
+url = "/services/compliance/"
+weight = 4
+
+[[menu.services]]
+name = "LMS Training"
+url = "/services/lms-training/"
+weight = 5
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

@@ -1,0 +1,156 @@
+<section id="approach" class="py-16 bg-[#dfe7f0]">
+  <div class="container mx-auto px-6">
+
+    {{ with .title }}
+    <h2 class="text-4xl font-semibold text-center text-slate-900 mb-12">
+      {{ . }}
+    </h2>
+    {{ end }}
+
+    <div class="relative max-w-6xl mx-auto">
+
+      <!-- Vertical Timeline -->
+      <div class="absolute left-0 md:left-10 top-0 bottom-0 w-[3px] bg-sky-500"></div>
+
+      {{ range .items }}
+      <div class="relative mb-8 md:pl-24">
+
+        <!-- Timeline Icon -->
+        <div class="absolute left-[-13px] md:left-[27px] top-8 w-7 h-7 rounded-full bg-sky-500 text-white flex items-center justify-center z-10 shadow">
+
+          {{ with .icon }}
+          <i class="{{ . }} text-xs"></i>
+          {{ else }}
+          <i class="fa-solid fa-circle text-[7px]"></i>
+          {{ end }}
+
+        </div>
+
+        <!-- Horizontal Connector -->
+        <div class="hidden md:block absolute left-10 top-[42px] w-14 h-[2px] bg-sky-500"></div>
+
+        <!-- Card -->
+        <div class="bg-white rounded-md shadow-sm border-l-2 border-sky-500 p-6 md:p-8">
+
+          <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
+
+            <!-- Left Content -->
+            <div>
+
+              {{ with .image }}
+              <img src="{{ . }}" alt="" class="w-16 h-16 object-contain mb-4">
+              {{ end }}
+
+              <h3 class="text-2xl font-medium text-sky-600 mb-2">
+                {{ .title }}
+              </h3>
+
+              {{ with .subtitle }}
+              <p class="text-sm font-semibold text-slate-900 mb-1">
+                {{ . }}
+              </p>
+              {{ end }}
+
+              {{ with .description }}
+              <p class="text-sm text-slate-700 leading-relaxed">
+                {{ . }}
+              </p>
+              {{ end }}
+
+            </div>
+
+            <!-- Step / Date -->
+            {{ with .date }}
+            <span class="text-sm text-slate-500 whitespace-nowrap">
+              {{ . }}
+            </span>
+            {{ end }}
+
+          </div>
+
+          <!-- Bullet Points -->
+          {{ with .points }}
+          <div class="mt-5">
+
+            <p class="text-sm font-semibold text-slate-700 mb-2">
+              Key Points:
+            </p>
+
+            <ul class="list-disc pl-6 text-sm text-sky-600 space-y-1">
+              {{ range . }}
+              <li>{{ . }}</li>
+              {{ end }}
+            </ul>
+
+          </div>
+          {{ end }}
+
+          <!-- Table -->
+          {{ with .table }}
+          <div class="mt-6 overflow-x-auto">
+
+            <table class="w-full text-sm text-left">
+
+              <thead>
+                <tr class="text-slate-900 border-b">
+
+                  {{ range .headers }}
+                  <th class="py-2 pr-6 font-semibold">
+                    {{ . }}
+                  </th>
+                  {{ end }}
+
+                </tr>
+              </thead>
+
+              <tbody class="text-slate-700">
+
+                {{ range .rows }}
+                <tr class="border-b border-slate-100">
+
+                  {{ range . }}
+                  <td class="py-2 pr-6">
+                    {{ . }}
+                  </td>
+                  {{ end }}
+
+                </tr>
+                {{ end }}
+
+              </tbody>
+
+            </table>
+
+          </div>
+          {{ end }}
+
+          <!-- Extra Content -->
+          {{ with .extra }}
+          <div class="mt-5 space-y-4 text-sm text-slate-700">
+
+            {{ range . }}
+            <div>
+
+              <p class="font-semibold text-slate-800 mb-1">
+                {{ .title }}
+              </p>
+
+              <p class="leading-relaxed">
+                {{ .text }}
+              </p>
+
+            </div>
+            {{ end }}
+
+          </div>
+          {{ end }}
+
+        </div>
+
+      </div>
+      {{ end }}
+
+    </div>
+
+  </div>
+</section>

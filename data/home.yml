@@ -1,0 +1,95 @@
+hero:
+  enable: true
+  subtitle: "ERP • IT Solutions • Digital Transformation"
+  title: "Empowering Businesses with **Smart ERP & Technology Solutions**"
+  text: "Axon Systems delivers ERP implementation, business automation, system integration, and IT consulting services designed to improve operational efficiency, scalability, and digital transformation."
+  image: "images/hero.png"
+
+  buttons:
+    - label: "Connect us"
+      link: "/contact/"
+    - label: "View more"
+      link: "/about/"
+
+features:
+  enable: true
+  title: "Our Digital Transformation Approach"
+  text: "A structured path from business analysis to ERP success."
+
+  items:
+    - pretitle: "Step 01"
+      pretext: "Discover & Analyze"
+      title: "Understand Business Processes"
+      text: "We study your current workflows, operational challenges, reporting needs, and system gaps before planning the right ERP or IT solution."
+      image: "images/businessprocess.jpg"
+      icon: "fa-solid fa-1"
+      color: "#2563EB"
+
+    - pretitle: "Step 02"
+      pretext: "Design & Implement"
+      title: "Build the Right Solution"
+      text: "We configure, customize, and integrate ERP systems around your business requirements while ensuring smooth deployment."
+      image: "images/solution-design.png"
+      icon: "fa-solid fa-2"
+      color: "#0EA5E9"
+
+    - pretitle: "Step 03"
+      pretext: "Train & Support"
+      title: "Ensure Long-Term Success"
+      text: "We provide user training, post-go-live support, maintenance, and continuous optimization to keep your systems reliable and effective."
+      image: "images/longtermsuccess.jpg"
+      icon: "fa-solid fa-3"
+      color: "#059669"
+
+
+whychooseus:
+  enable: true
+  subtitle: "Enterprise Solutions Backed by Experience"
+  title: "Why Partner With Us"
+
+  items:
+    - title: "Industry-Focused Expertise"
+      description: >
+        Deep understanding of operational workflows, ERP systems, and enterprise processes.
+
+    - title: "Reliable Project Delivery"
+      description: >
+        Reliable ERP support and continuous system maintenance to ensure
+        optimal performance, minimal downtime, and smooth business operations.
+
+    - title: "IT Consulting"
+      description: >
+        Structured implementation approaches designed to minimize disruption and maximize adoption.
+
+    - title: "End-to-End Technology Support"
+      description: >
+        From planning and deployment to optimization and long-term support.
+
+    - title: "Scalable Business Solutions"
+      description: >
+        Technology foundations built to support growth, efficiency, and digital transformation.
+
+    - title: "Integration & Automation"
+      description: >
+        Connecting systems and streamlining operations through intelligent automation.
+
+highlights:
+  enable: true
+  items:
+    - title: "ERP Implementation & Business Automation"
+      text: >
+        End-to-end ERP implementation, workflow automation, system integration,
+        and operational optimization designed to improve business efficiency,
+        visibility, and scalability.
+      button:
+        label: "Explore Services"
+        link: "/services/"
+
+    - title: "Training, Support & Digital Transformation"
+      text: >
+        Practical ERP training, continuous technical support, compliance
+        management, and strategic IT consulting to help organizations adapt,
+        grow, and succeed in a digital-first environment.
+      button:
+        label: "Contact Us"
+        link: "/contact/"

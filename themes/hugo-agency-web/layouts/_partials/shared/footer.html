@@ -1,0 +1,118 @@
+{{ with site.Data.shared.subscribe }}
+  {{ if .enable }}
+    {{ partial "blocks/shared/subscribe" . }}
+  {{ end }}
+{{ end }}
+
+<footer class="bg-[#0f1117] text-white pt-16 pb-0">
+  <div class="h-[3px] bg-gradient-to-r from-primary via-primary/60 to-transparent rounded-t mb-10 mx-10"></div>
+
+  <div class="container mx-auto px-10">
+
+    <div class="grid xl:grid-cols-[2fr_1fr_1fr_1fr] gap-12 pb-14 border-b border-white/[0.08]">
+
+      <!-- Brand column -->
+      <div>
+        <h2 class="font-serif text-2xl font-semibold text-white tracking-tight mb-4">
+          {{ site.Title }}
+        </h2>
+
+        <p class="text-sm leading-relaxed text-white/40 max-w-[280px] mb-7">
+          {{ site.Params.description }}
+        </p>
+
+        <div class="flex gap-2.5">
+          {{ range site.Data.shared.footer.social }}
+            <a
+              class="flex items-center justify-center w-9 h-9 rounded-full border border-white/10 text-white/40 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all duration-200"
+              aria-label="{{ .title }}"
+              href="{{ .link }}"
+            >
+              <i class="{{ .icon }}"></i>
+            </a>
+          {{ end }}
+        </div>
+      </div>
+
+      <!-- About column -->
+      <div>
+        <p class="text-[11px] font-medium tracking-[0.12em] uppercase text-white mb-5">
+          About Us
+        </p>
+
+        <ul class="flex flex-col gap-3">
+          {{ range site.Menus.footer }}
+            <li>
+              <a
+                class="text-sm text-white/40 hover:text-white/80 transition-colors duration-150"
+                href="{{ .URL }}"
+              >
+                {{ .Name }}
+              </a>
+            </li>
+          {{ end }}
+        </ul>
+      </div>
+
+      <!-- Services column -->
+      <div>
+        <p class="text-[11px] font-medium tracking-[0.12em] uppercase text-white mb-5">
+          Services
+        </p>
+
+        <ul class="flex flex-col gap-3">
+          {{ range site.Menus.services }}
+            <li>
+              <a
+                class="text-sm text-white/40 hover:text-white/80 transition-colors duration-150"
+                href="{{ .URL }}"
+              >
+                {{ .Name }}
+              </a>
+            </li>
+          {{ end }}
+        </ul>
+      </div>
+
+      <!-- Contact column -->
+      <div>
+        <p class="text-[11px] font-medium tracking-[0.12em] uppercase text-white mb-5">
+          {{ site.Data.shared.footer.contact.title }}
+        </p>
+
+        {{ range site.Data.shared.footer.contact.items }}
+          <div class="flex items-start gap-2.5 mb-3.5">
+            <i class="ti {{ .icon }} text-primary text-[15px] mt-0.5 shrink-0"></i>
+
+            <a
+              class="text-sm text-white/40 hover:text-white/80 transition-colors duration-150 leading-snug"
+              href="{{ .link }}"
+            >
+              {{ .label }}
+            </a>
+          </div>
+        {{ end }}
+      </div>
+
+    </div>
+
+    {{ with site.Data.shared.footer.copyright }}
+      <div class="flex flex-col xl:flex-row items-center justify-between gap-4 py-5">
+        <p class="text-[13px] text-white/25">
+          {{ . }}
+        </p>
+
+        <div class="flex gap-5">
+          <a class="text-[13px] text-white/25 hover:text-white/50 transition-colors" href="/privacy">
+            Privacy policy
+          </a>
+
+          <a class="text-[13px] text-white/25 hover:text-white/50 transition-colors" href="/terms">
+            Terms of use
+          </a>
+        </div>
+      </div>
+    {{ end }}
+
+  </div>
+</footer>

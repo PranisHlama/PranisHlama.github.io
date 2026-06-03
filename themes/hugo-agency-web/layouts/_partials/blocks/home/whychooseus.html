@@ -1,0 +1,51 @@
+<section id="why-choose-us" class="py-16 bg-[#eef2f5]">
+  <div class="container mx-auto px-6">
+
+    <!-- Heading -->
+    <div class="text-center mb-14">
+      {{ with .subtitle }}
+      <p class="uppercase tracking-[0.25em] text-[11px] text-sky-400 font-semibold mb-3">
+        {{ . }}
+      </p>
+      {{ end }}
+
+      {{ with .title }}
+      <h2 class="text-4xl md:text-5xl font-bold text-[#111827]">
+        {{ . }}
+      </h2>
+      {{ end }}
+    </div>
+
+    <!-- Features -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-14 gap-y-12">
+
+      {{ range $index, $item := .items }}
+      <div class="flex gap-4">
+
+        <!-- Number + Line -->
+        <div class="flex items-start gap-2 pt-1 shrink-0">
+          <span class="text-[11px] font-bold text-sky-400 tracking-wide">
+            {{ printf "%02d" (add $index 1) }}
+          </span>
+
+          <div class="w-8 h-px bg-sky-300 mt-[7px]"></div>
+        </div>
+
+        <!-- Content -->
+        <div>
+          <h3 class="text-[20px] leading-[1.15] font-bold text-[#111827] mb-3">
+            {{ .title }}
+          </h3>
+
+          <p class="text-[13px] leading-6 text-slate-500 max-w-[260px]">
+            {{ .description }}
+          </p>
+        </div>
+
+      </div>
+      {{ end }}
+
+    </div>
+
+  </div>
+</section>

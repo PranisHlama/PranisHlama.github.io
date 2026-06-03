@@ -1,0 +1,134 @@
+<section id="services" class="services py-12 bg-slate-200">
+  <div class="container mx-auto px-4">
+
+    {{ with .title }}
+      <h2 class="text-4xl font-semibold mb-4 text-center text-slate-900">
+        {{ . }}
+      </h2>
+    {{ end }}
+
+    <!-- Tag Filters -->
+    <div class="flex justify-center mb-6">
+      <div class="inline-flex rounded bg-slate-800 overflow-hidden">
+        <button class="service-filter active" data-filter="all">All</button>
+
+        {{ $tags := slice }}
+        {{ range .items }}
+          {{ range .tags }}
+            {{ $tags = $tags | append . }}
+          {{ end }}
+        {{ end }}
+
+        {{ range uniq $tags }}
+          <button class="service-filter" data-filter="{{ . | urlize }}">
+            {{ . }}
+          </button>
+        {{ end }}
+      </div>
+    </div>
+
+    <!-- Cards -->
+    <div class="services-grid grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+      {{ range .items }}
+        {{ $tagClasses := slice }}
+        {{ range .tags }}
+          {{ $tagClasses = $tagClasses | append (. | urlize) }}
+        {{ end }}
+
+        <div class="service-card rounded border bg-white text-left overflow-hidden transition duration-300"
+             data-tags="{{ delimit $tagClasses " " }}">
+
+          <div class="flex items-center gap-2 px-4 py-3 border-b border-sky-200">
+            {{ with .icon }}
+              <img src="{{ . }}" alt="" class="w-6 h-6">
+            {{ end }}
+
+            <h3 class="text-xl font-medium text-slate-950">
+              {{ .title }}
+            </h3>
+          </div>
+
+          <div class="px-4 py-3">
+            <p class="text-slate-900 leading-relaxed">
+              {{ .description }}
+            </p>
+          </div>
+
+        </div>
+      {{ end }}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .service-filter {
+    padding: 0.55rem 1rem;
+    color: white;
+    font-size: 0.95rem;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .service-filter:hover,
+  .service-filter.active {
+    background: #1e40af;
+  }
+
+  .service-card {
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+      opacity 0.28s ease,
+      transform 0.28s ease;
+  }
+
+  .service-card.is-fading {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  .service-card.is-hidden {
+    display: none;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const buttons = document.querySelectorAll(".service-filter");
+    const cards = document.querySelectorAll(".service-card");
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const filter = button.dataset.filter;
+
+        buttons.forEach((btn) => btn.classList.remove("active"));
+        button.classList.add("active");
+
+        cards.forEach((card) => {
+          card.classList.add("is-fading");
+        });
+
+        setTimeout(() => {
+          cards.forEach((card) => {
+            const tags = card.dataset.tags.split(" ");
+            const shouldShow = filter === "all" || tags.includes(filter);
+
+            if (shouldShow) {
+              card.classList.remove("is-hidden");
+            } else {
+              card.classList.add("is-hidden");
+            }
+          });
+
+          requestAnimationFrame(() => {
+            cards.forEach((card) => {
+              if (!card.classList.contains("is-hidden")) {
+                card.classList.remove("is-fading");
+              }
+            });
+          });
+        }, 220);
+      });
+    });
+  });
+</script>

@@ -1,0 +1,148 @@
+{{ $sectionID := replace (lower .section.name) " " "-" }}
+{{ if .section.id }}
+  {{ $sectionID = .section.id }}
+{{ end }}
+
+{{ $author := hugo.Data.author }}
+{{ if (index hugo.Data site.Language.Lang).author }}
+  {{ $author = (index hugo.Data site.Language.Lang).author }}
+{{ end }}
+
+<section id="{{ $sectionID }}" class="about-section py-20 bg-[#f8fafc]">
+  <div class="container mx-auto px-6">
+    <div class="bg-white rounded-3xl shadow-xl border border-slate-100 p-8 md:p-14 lg:p-16">
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+
+        <!-- Left Content -->
+        <div>
+          <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+            {{ $author.name }}
+          </h2>
+
+          {{ if .designation }}
+          <h3 class="text-xl md:text-2xl text-slate-600 mb-8">
+            {{ .designation }}
+            {{ if .company }}
+              <span class="text-slate-400">at</span>
+              <a href="{{ .company.url }}"
+                 title="{{ .company.name }}"
+                 target="_blank"
+                 rel="noopener"
+                 class="text-blue-600 hover:text-blue-700 font-medium">
+                {{ .company.name }} ↗
+              </a>
+            {{ end }}
+          </h3>
+          {{ end }}
+
+          <p class="text-lg leading-9 text-slate-700 max-w-2xl mb-10">
+            {{ .summary | markdownify }}
+          </p>
+
+          {{ if .socialLinks }}
+          <ul class="flex flex-wrap gap-4 mb-10">
+            {{ range .socialLinks }}
+            <li>
+              {{ if eq .name "Email" }}
+              <a href="mailto:{{ .url }}" title="{{ .name }}" target="_blank" rel="{{ .rel | default "noopener" }}" class="about-social">
+                <i class="{{ .icon }}"></i>
+              </a>
+              {{ else if eq .name (i18n "phone") }}
+              <a href="tel:{{ .url }}" title="{{ .name }}" target="_blank" rel="{{ .rel | default "noopener" }}" class="about-social">
+                <i class="{{ .icon }}"></i>
+              </a>
+              {{ else }}
+              <a href="{{ .url }}" title="{{ .name }}" target="_blank" rel="{{ .rel | default "noopener" }}" class="about-social">
+                <i class="{{ .icon }}"></i>
+              </a>
+              {{ end }}
+            </li>
+            {{ end }}
+          </ul>
+          {{ end }}
+
+          <div class="flex flex-wrap gap-5">
+            {{ if .resume }}
+            <a href="{{ .resume | relURL }}" title="{{ i18n "resume" }}" target="_blank" class="about-btn">
+              <i class="fa-solid fa-download mr-2"></i>
+              {{ i18n "resume" }}
+            </a>
+            {{ end }}
+
+            {{ range .resourceLinks }}
+            <a href="{{ .url | relURL }}" title="{{ .title }}" target="_blank" class="about-btn">
+              {{ .title }}
+            </a>
+            {{ end }}
+          </div>
+        </div>
+
+        <!-- Right Badges / Skills -->
+        <div>
+          {{ if .badges }}
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 mb-12">
+            {{ range .badges }}
+            <div class="flex justify-center">
+              {{ partial "misc/badge.html" . }}
+            </div>
+            {{ end }}
+          </div>
+          {{ end }}
+
+          {{ if .softSkills }}
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-8">
+            {{ range .softSkills }}
+            <div class="flex justify-center">
+              {{ partial "misc/soft-skills.html" . }}
+            </div>
+            {{ end }}
+          </div>
+          {{ end }}
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-social {
+    width: 48px;
+    height: 48px;
+    border-radius: 999px;
+    background: #f1f5f9;
+    color: #0f172a;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    transition: all 0.2s ease;
+  }
+
+  .about-social:hover {
+    background: #0f172a;
+    color: #ffffff;
+    transform: translateY(-3px);
+  }
+
+  .about-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 160px;
+    padding: 0.9rem 1.4rem;
+    border-radius: 0.55rem;
+    background: #0f2742;
+    color: #ffffff;
+    font-weight: 700;
+    box-shadow: 0 8px 18px rgba(15, 39, 66, 0.2);
+    transition: all 0.2s ease;
+  }
+
+  .about-btn:hover {
+    background: #102f50;
+    color: #ffffff;
+    transform: translateY(-3px);
+  }
+</style>
